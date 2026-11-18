@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ながれキー｜千葉・我孫子の自作キーボード交流会</title>
+  <meta name="description" content="ながれキーは、千葉県・我孫子駅前を拠点に開催する小さな自作キーボード交流会です。持ち寄ったキーボードを見て、試打して、語り合う。初めての方や手ぶらの方も歓迎です。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="ながれキー">
+  <meta property="og:title" content="ながれキー｜自作キーボード交流会">
+  <meta property="og:description" content="作る人も、使う人も、気になる人も。千葉県・我孫子駅前を拠点に開催する、小さな自作キーボード交流会。">
+  <meta property="og:url" content="https://alektor-diy.github.io/nagare-key/">
+  <meta property="og:image" content="https://alektor-diy.github.io/nagare-key/image/web/hero-1440.jpg">
+  <meta property="og:image:width" content="1440">
+  <meta property="og:image:height" content="1080">
+  <meta property="og:image:alt" content="テーブルに並んだ色とりどりの自作キーボード">
+  <link rel="icon" type="image/png" href="image/web/favicon.png">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f6f3eb;
+      --ink: #282725;
+      --muted: #55534c;
+      --line: #d7d1c3;
+      --red: #ef6859;
+      --yellow: #f7b538;
+      --teal: #249f9e;
+      font-family: "Hiragino Sans", "Yu Gothic", YuGothic, "Meiryo", sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; }
+    h1, h2, p { margin: 0; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; }
+    a:focus-visible { outline: 3px solid #17736e; outline-offset: 5px; }
+
+    .wrap {
+      width: min(1200px, 100% - 112px);
+      margin-inline: auto;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+      align-items: center;
+      gap: clamp(36px, 6vw, 88px);
+      padding-block: clamp(54px, 6.7vw, 96px) clamp(75px, 8.9vw, 128px);
+    }
+
+    .hero-logo {
+      width: clamp(220px, 25vw, 356px);
+      height: auto;
+    }
+
+    .tagline {
+      margin-block: clamp(26px, 3.3vw, 48px) 30px;
+      font-size: clamp(1.8rem, 3.28vw, 3rem);
+      font-weight: 800;
+      line-height: 1.36;
+      letter-spacing: -.045em;
+    }
+
+    .tagline span { display: block; }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      width: fit-content;
+      min-height: 54px;
+      padding: 13px 19px;
+      border: 1px solid var(--ink);
+      border-radius: 8px;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: .9375rem;
+      font-weight: 700;
+      line-height: 1.5;
+      text-decoration: none;
+    }
+
+    .cta:hover { background: #494640; }
+    .cta-arrow { font-size: 1.2rem; line-height: 1; }
+
+    .hero-visual {
+      padding-bottom: 16px;
+      overflow: hidden;
+      border-radius: 10px;
+      background: linear-gradient(to right, #78b6b5 76%, var(--red) 76% 84%, var(--yellow) 84% 92%, var(--teal) 92%);
+    }
+
+    .hero-photo {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 5 / 4;
+      object-fit: cover;
+      object-position: 54% 54%;
+    }
+
+    .about {
+      border-top: 1px solid var(--line);
+      padding-block: clamp(56px, 7.4vw, 106px) clamp(65px, 8vw, 115px);
+    }
+
+    .about-intro {
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
+      align-items: start;
+      gap: clamp(30px, 6vw, 88px);
+      margin-bottom: clamp(30px, 4vw, 57px);
+    }
+
+    h2 {
+      font-size: clamp(1.875rem, 3.1vw, 2.75rem);
+      font-weight: 800;
+      line-height: 1.35;
+      letter-spacing: -.04em;
+    }
+
+    .about h2::before {
+      content: "";
+      display: block;
+      width: 37px;
+      height: 5px;
+      margin-bottom: 17px;
+      border-radius: 3px;
+      background: var(--red);
+    }
+
+    .about-copy {
+      color: var(--muted);
+      font-size: clamp(1rem, 1.37vw, 1.125rem);
+      line-height: 1.85;
+      line-break: strict;
+    }
+
+    .about-copy p + p { margin-top: .7em; }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      grid-template-rows: repeat(2, minmax(0, 1fr));
+      gap: clamp(10px, 1.4vw, 20px);
+      aspect-ratio: 2 / 1;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      min-height: 0;
+      grid-column: span 2;
+      object-fit: cover;
+      object-position: center 57%;
+      border-radius: 8px;
+    }
+
+    .gallery .gallery-main {
+      grid-area: 1 / 1 / 3 / 4;
+      object-position: 48% 54%;
+    }
+
+    .join {
+      padding-block: clamp(42px, 6.2vw, 88px);
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .join-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .join p {
+      margin-top: 12px;
+      color: #e4ded3;
+      font-size: .9375rem;
+      line-height: 1.75;
+    }
+
+    .join .cta {
+      flex-shrink: 0;
+      border-color: transparent;
+      background: var(--yellow);
+      color: var(--ink);
+    }
+
+    .join .cta:hover { background: #ffd071; }
+    .join .cta:focus-visible { outline-color: var(--paper); }
+
+    .footer {
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+      padding-block: 25px 27px;
+      color: var(--muted);
+      font-size: .875rem;
+      line-height: 1.65;
+    }
+
+    .footer a {
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration-color: #17736e;
+      text-underline-offset: .22em;
+    }
+
+    @media (max-width: 1000px) {
+      .wrap { width: calc(100% - 64px); }
+    }
+
+    @media (max-width: 820px) {
+      .wrap { width: calc(100% - 40px); }
+      .hero, .about-intro { grid-template-columns: 1fr; }
+      .hero { gap: 29px; padding-block: 33px 57px; }
+      .hero-logo { width: clamp(185px, 55vw, 278px); }
+      .tagline { margin-block: 22px 21px; font-size: clamp(1.75rem, 7.5vw, 2.5625rem); }
+      .hero-visual { padding-bottom: 11px; }
+      .hero-photo { aspect-ratio: 4 / 3; }
+      .about { padding-block: 44px 58px; }
+      .about-intro { gap: 18px; margin-bottom: 26px; }
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: auto;
+        aspect-ratio: auto;
+      }
+      .gallery img { grid-column: auto; height: auto; aspect-ratio: 4 / 3; }
+      .gallery .gallery-main { grid-area: auto / 1 / auto / -1; }
+      .join-inner { align-items: flex-start; flex-direction: column; }
+      .footer { padding-block: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero wrap" aria-labelledby="event-name">
+      <div>
+        <h1 id="event-name"><img class="hero-logo" src="image/logo.png" width="1022" height="625" alt="ながれキー"></h1>
+        <p class="tagline"><span>作る人も、使う人も、</span> <span>気になる人も。</span></p>
+        <a class="cta" href="https://nagare-key.connpass.com/">開催情報・参加申し込み <span class="cta-arrow" aria-hidden="true">↗</span></a>
+      </div>
+      <div class="hero-visual">
+        <img class="hero-photo" src="image/web/hero-1440.jpg"
+             srcset="image/web/hero-720.jpg 720w, image/web/hero-1440.jpg 1440w"
+             sizes="(max-width: 820px) calc(100vw - 40px), (max-width: 1312px) 51vw, 672px"
+             width="1440" height="1080" fetchpriority="high" alt="テーブルに並んだ色とりどりの自作キーボード">
+      </div>
+    </section>
+
+    <section class="about wrap" aria-labelledby="about-title">
+      <div class="about-intro">
+        <h2 id="about-title">見て、触れて、<br>語り合う。</h2>
+        <div class="about-copy">
+          <p>ながれキーは、千葉県の我孫子駅前を拠点に開く、20〜30人ほどの小さな自作キーボード交流会です。</p>
+          <p>お気に入りのキーボードを持ち寄り、試打や情報交換を楽しみます。初めての方も歓迎です。キーボードをお持ちでない方には、手ぶら参加枠もあります。</p>
+        </div>
+      </div>
+      <div class="gallery">
+        <img class="gallery-main" src="image/web/gallery-02-1440.jpg"
+             srcset="image/web/gallery-02-720.jpg 720w, image/web/gallery-02-1440.jpg 1440w"
+             sizes="(max-width: 820px) calc(100vw - 40px), (max-width: 1312px) 53vw, 712px"
+             width="1440" height="1080" loading="lazy" decoding="async" alt="キーボードを並べたテーブルを囲んで参加者が交流する会場">
+        <img src="image/web/gallery-01-960.jpg" width="960" height="720"
+             loading="lazy" decoding="async" alt="窓際のテーブルいっぱいに持ち寄られたキーボード">
+        <img src="image/web/gallery-03-960.jpg" width="960" height="720"
+             loading="lazy" decoding="async" alt="会場のテーブルを巡り、持ち寄ったキーボードを見て回る参加者">
+      </div>
+    </section>
+
+    <section class="join" aria-labelledby="join-title">
+      <div class="join-inner wrap">
+        <div>
+          <h2 id="join-title">次回のながれキー</h2>
+          <p>日程・会場・参加枠はconnpassでご確認ください。</p>
+        </div>
+        <a class="cta" href="https://nagare-key.connpass.com/">開催情報・参加申し込み <span class="cta-arrow" aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <span>主催</span>
+    <a href="https://alektor-diy.github.io/">A'sKey（アレくとーる）</a>
+  </footer>
+</body>
+</html>
